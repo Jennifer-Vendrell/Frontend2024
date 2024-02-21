@@ -3,23 +3,39 @@ import { useState } from 'react'
 
 const numericButtonsClasses = 'btn btn-outline-dark w-100'
 const OperadoresButtonsClasses = 'btn btn-outline-secondary w-100'
+const specialButtonsClases= 'btn btn-outline-dark w-100'
+
 function App() {
 const [display, setDisplay]= useState({
 value: `0`,
+hasPoint: false,
 })
 
 const updateDisplay=(value)=>{
-if (display. value===`0`){
-  setDisplay({
-    value:value,
-  })
+if ( value===`.`){
+if (display.hasPoint){
+  return
 }
+setDisplay({
+  ...display,
+  value: display. value + value,
+  hasPoint: true,
+})
 return
-
-  setDisplay({
-    value: display. value + value,
-  })
 }
+if (display.value ===`0`){
+  setDisplay({
+    ...display,
+    value: value,
+  })
+  return
+}
+setDisplay({
+  ...display,
+  value: display. value + value,
+  
+      })
+  }
 
   return(
     <div>
@@ -37,6 +53,7 @@ return
             <button
             className='btn btn-outline-danger'
             type='button'
+            onClick={clearDispaly}
             >
               C
             </button>
@@ -80,6 +97,7 @@ return
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={()=>updateDisplay(`8`)}
             >
               8
             </button>
@@ -88,6 +106,7 @@ return
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={()=>updateDisplay(`9`)}
             >
               9
             </button>
@@ -106,6 +125,7 @@ return
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={()=>updateDisplay(`4`)}
             >
               4
             </button>
@@ -114,6 +134,7 @@ return
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={()=>updateDisplay(`5`)}
             >
               5
             </button>
@@ -122,6 +143,7 @@ return
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={()=>updateDisplay(`6`)}
             >
               6
             </button>
@@ -140,6 +162,7 @@ return
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={()=>updateDisplay(`1`)}
             >
               1
             </button>
@@ -147,6 +170,7 @@ return
             <td
             className={numericButtonsClasses}
             type='button'
+            onClick={()=>updateDisplay(`2`)}
             >
               2
             </td>
@@ -154,6 +178,7 @@ return
             <button
             className={numericButtonsClasses}
             type='button'
+            onClick={()=>updateDisplay(`3`)}
             >
               3
             </button>
@@ -175,6 +200,7 @@ return
               <button
               className={numericButtonsClasses}
               type='button'
+              onClick={()=>updateDisplay(`0`)}
               >
                 0
               </button>
@@ -182,6 +208,7 @@ return
             <td
             className={numericButtonsClasses}
             type='button'
+            onClick={()=>updateDisplay(`.`)}
             >
               .
             </td>
