@@ -1,41 +1,90 @@
-import '.App.css'
 import { useState } from 'react'
-
+import './App.css'
 const numericButtonsClasses = 'btn btn-outline-dark w-100'
 const OperadoresButtonsClasses = 'btn btn-outline-secondary w-100'
-const specialButtonsClases= 'btn btn-outline-dark w-100'
-
 function App() {
-const [display, setDisplay]= useState({
-value: `0`,
-hasPoint: false,
-})
 
-const updateDisplay=(value)=>{
-if ( value===`.`){
-if (display.hasPoint){
-  return
+  const [display, setDisplay] = useState ({
+    value: '0',
+    hasPoint: false,
+    opertor:``,
+    previousValue:`0`,
+    })
+
+
+
+
+  const updateDisplay = (value) => { 
+    if (value === '.'){
+      if (display.hasPoint){
+        return
+      }
+      
+    setDisplay({
+      ...display,
+      value: display.value + value,
+      hasPoint: true, 
+    })
+    return
+  }
+      if (display.value === '0') {
+      setDisplay ({
+        ...display,
+        value: value, 
+      })
+      return
+    }
+    setDisplay ({
+      ...display, 
+      value: display.value + value,
+  })
+
 }
-setDisplay({
-  ...display,
-  value: display. value + value,
-  hasPoint: true,
-})
-return
+  const clearDisplay = () => {
+    setDisplay ({
+      ...display,
+      value: '0',
+      hasPoint: false,
+    })
+  }
+  
+  const deletelastCharacter=()=>{
+    setDisplay({
+      ...display,
+      value: display.value.slice(0,-1)
+  
+    })
+    if (display.value.length === 1){
+      setDisplay({
+        ...display,
+        value:`0`
+      })
+   }
 }
-if (display.value ===`0`){
+
+const setOperator=(opertor)=>{
   setDisplay({
     ...display,
-    value: value,
+    opertor,
+    previousValue: display.value,
+    value:`0`,
+    hasPoint:false,
   })
-  return
 }
-setDisplay({
-  ...display,
-  value: display. value + value,
-  
-      })
+
+const calculate= ()=>{
+  if(display.operator===''){
+    return
   }
+  setDisplay({
+    ...display,
+    operator:'',
+    hasPoint:false,
+    previousValue:`0`,
+    value:eval('${display.previousValue} ${display.operator}${display.value}'),
+  })
+
+}
 
   return(
     <div>
@@ -53,7 +102,7 @@ setDisplay({
             <button
             className='btn btn-outline-danger'
             type='button'
-            onClick={clearDispaly}
+            onClick={() => clearDisplay ('0')}
             >
               C
             </button>
@@ -62,6 +111,7 @@ setDisplay({
             <button
             className='btn btn-outline-danger'
             type='button'
+            onClick={deletelastCharacter}
             >
               {'<'}
             </button>
@@ -88,7 +138,7 @@ setDisplay({
             <button
             className={numericButtonsClasses}
             type='button'
-            onClick={()=>updateDisplay(`7`)}
+            onClick={() => updateDisplay('7')}
             >
               7
             </button>
@@ -97,7 +147,7 @@ setDisplay({
             <button
             className={numericButtonsClasses}
             type='button'
-            onClick={()=>updateDisplay(`8`)}
+            onClick={() => updateDisplay('8')}
             >
               8
             </button>
@@ -106,7 +156,7 @@ setDisplay({
             <button
             className={numericButtonsClasses}
             type='button'
-            onClick={()=>updateDisplay(`9`)}
+            onClick={() => updateDisplay('9')}
             >
               9
             </button>
@@ -115,6 +165,7 @@ setDisplay({
             <button
             className={OperadoresButtonsClasses}
             type='button'
+            
             >
               X
             </button>
@@ -125,7 +176,7 @@ setDisplay({
             <button
             className={numericButtonsClasses}
             type='button'
-            onClick={()=>updateDisplay(`4`)}
+            onClick={() => updateDisplay('4')}
             >
               4
             </button>
@@ -134,7 +185,7 @@ setDisplay({
             <button
             className={numericButtonsClasses}
             type='button'
-            onClick={()=>updateDisplay(`5`)}
+            onClick={() => updateDisplay('5')}
             >
               5
             </button>
@@ -143,7 +194,7 @@ setDisplay({
             <button
             className={numericButtonsClasses}
             type='button'
-            onClick={()=>updateDisplay(`6`)}
+            onClick={() => updateDisplay('6')}
             >
               6
             </button>
@@ -162,7 +213,7 @@ setDisplay({
             <button
             className={numericButtonsClasses}
             type='button'
-            onClick={()=>updateDisplay(`1`)}
+            onClick={() => updateDisplay('1')}
             >
               1
             </button>
@@ -170,7 +221,7 @@ setDisplay({
             <td
             className={numericButtonsClasses}
             type='button'
-            onClick={()=>updateDisplay(`2`)}
+            onClick={() => updateDisplay('2')}
             >
               2
             </td>
@@ -178,7 +229,7 @@ setDisplay({
             <button
             className={numericButtonsClasses}
             type='button'
-            onClick={()=>updateDisplay(`3`)}
+            onClick={() => updateDisplay('3')}
             >
               3
             </button>
@@ -190,6 +241,7 @@ setDisplay({
             <button
             className={OperadoresButtonsClasses}
             type='button'
+            onClick={()=>setOperator('+')}
             >
               +
             </button>
@@ -200,7 +252,7 @@ setDisplay({
               <button
               className={numericButtonsClasses}
               type='button'
-              onClick={()=>updateDisplay(`0`)}
+              onClick={() => updateDisplay('0')}
               >
                 0
               </button>
@@ -208,7 +260,7 @@ setDisplay({
             <td
             className={numericButtonsClasses}
             type='button'
-            onClick={()=>updateDisplay(`.`)}
+            onClick={() => updateDisplay('.')}
             >
               .
             </td>
@@ -216,6 +268,7 @@ setDisplay({
             <button
             className='btn btn-outline-danger'
             type='button'
+            onClick={calculate}
             >
               =
             </button>
@@ -225,7 +278,7 @@ setDisplay({
       </table>
     </div>
   )
+ }
 
-}
 
 export default App
