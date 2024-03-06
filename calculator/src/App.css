@@ -1,13 +1,10 @@
-/*
-table, td{
+/*table, td{
     border: 1px solid black;
-     border-collapse:collapse ;
-}
-*/
+    border-collapse: collapse;
+    
+}*/
 
-
-center{
+.center{
     margin-left: auto;
     margin-right: auto;
-
 }
