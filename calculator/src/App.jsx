@@ -91,7 +91,8 @@ function App() {
 
 let result = (display.operator === '%')?
     eval(display.previousValue + ' / 100 *' + display.value):
-    eval(display.previousValue + display.operator + display.value )
+    eval(display.previousValue + display.operator + display.value ):
+    display.operator === `x`?
     
 
     result = result + ""
@@ -106,6 +107,7 @@ let result = (display.operator === '%')?
   }
 
   const limit = (string = '', length =10) => {
+    string = string +``
     return string.slice(0, length)
   }
 
@@ -134,6 +136,8 @@ let result = (display.operator === '%')?
                 <ButtonsRow 
                 key={index}
                 row={row}
+                buttonsFuntions={buttonsFuntions}
+            
                 />
               )
             })

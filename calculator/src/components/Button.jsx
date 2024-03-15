@@ -4,7 +4,8 @@ export const Button = ({
     label,
     class:buttonClass,
     columns,
-    function:buttonFunction
+    function:buttonFunction,
+    buttonsFunctions
       
     
 })=>{
@@ -13,10 +14,13 @@ export const Button = ({
         <button 
         className={buttonsClasses[buttonClass]}
         type='button'
-        onClick={'clearDisplay'}
+        onClick={()=> buttonsFunction[buttonFunction]({label})}
         >
             {label}
           </button>
           </td>
     )
+}
+Button.prototypes={
+
 }
