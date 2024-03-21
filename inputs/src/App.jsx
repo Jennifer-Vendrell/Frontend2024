@@ -1,28 +1,19 @@
-import { useState } from "react"
-
+import { useForm } from "./Hooks/useForm"
 
 function App() {
-  const [inputsForm, setInputsForm] = useState({
-    username: "",
-    password: "",
+  const [inputsForm, handleInputChange, formReset]= useForm({
+    username:"",
+    password:"",
   })
-
-  const handleInputChange = (event) => {
-    setInputsForm({
-      ...inputsForm,
-      [event.target.name]: event.target.value,
-    })
-  }
+  
 
   const handleSubmit = (e) =>{
     e.preventDefault()
     console.log("Nombre de usuario:", inputsForm.username)
     console.log("Contraseña:", inputsForm.password)
-    setInputsForm({
-      username: "",
-      password: "",
-    })
-  }
+    formReset()
+    }
+  
 
 return(
   <div>
@@ -53,6 +44,7 @@ return(
     </form>
   </div>
 )
+
 }
 
 export default App
