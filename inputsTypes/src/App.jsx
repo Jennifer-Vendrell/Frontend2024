@@ -23,10 +23,9 @@ function App() {
     time:"",
     url:"",
     week:"",
-    })
-  
-  
 
+  })
+  
   const handleSubmit = (e) =>{
     e.preventDefault()
     console.log("button:", inputsForm.button)
@@ -103,7 +102,7 @@ return(
         value={inputsForm.date}
         onChange={(event) => handleInputChange(event)}
         />
-      </div>
+      </div> 
 
       <div>
         <label htmlFor="datetime">datetime</label>
@@ -172,7 +171,7 @@ return(
       </div>
 
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password">password</label>
         <input 
         id="password" 
         type="password" 
@@ -292,6 +291,7 @@ return(
         />
       </div>
 
+      
 
       <button type="submit">Submit</button>
     </form>
