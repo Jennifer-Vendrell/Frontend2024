@@ -1,37 +1,33 @@
+import List from "./List"
+
+const taskList = [
+  {
+  id: 1,
+  task: "Estudiar",
+  limit: "13:00",
+},
+{
+  id: 2,
+  task: "Practicar",
+  limit: "14:00",
+},
+{
+  id: 3,
+  task: "Trabajar",
+  limit: "15:00",
+}
+]
+
 function App() {
+
   return (
-    <div className="container"> 
-    <h1>To Do List</h1>
-    <hr />
-    <div className="row">
-      <div className="col-6">
-        <h4>Tasks</h4>
-      </div>
-      <div className="col-2">
-        <h4>Limit</h4>
-      </div>
-      <div className="col">
-        <h4>Actions</h4>
-      </div>
-      <div className="row">
-        <div className="col-6">
-          Estudiar
-        </div>
-        <div className="col-2">
-          13:00
-        </div>
-        <div className="col">
-          <button className="btn btn-sm btn-primary">
-            Edit
-          </button>
-          <button className="btn btn-sm btn-danger">
-            Delete
-          </button>
-        </div>
-      </div>
+    <div class="container">
+      <h1>To Do List</h1>
+      <hr />
+      <List 
+      taskList={taskList}
+      />
     </div>
-    </div>
-    
   )
 }
 
