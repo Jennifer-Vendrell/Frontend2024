@@ -1,4 +1,15 @@
+import { useForm } from "./Hooks/UseForm"
+
+const taskInfo={
+    task:"",
+    description:"",
+    location:"",
+    limit:"",
+}
+
 const TaskModal = () => {
+    const [values, handleInputChange, reset]= useForm(taskInfo)
+
     return(
         <div className="modal fade" id={"taskModal"}>
             <div className="modal-dialog mdoal-dialog-centered">
@@ -13,13 +24,69 @@ const TaskModal = () => {
                 </div>
                 <div className="modal-body">
                     <div className="row">
-                        <p className="col">
-                        Formulario
-                        </p>
+                        <div className="col">
+                         <label 
+                         className="form-label"
+                         htmlFor="task"
+                         >Task</label>
+
+                         <input
+                         className="form-control"
+                         id="task"
+                         name="task"
+                         onChange={handleInputChange}
+                         type="text"
+                         value={values.task}
+                         />
+
+                         <label
+                         className="form-label"
+                         htmlFor="description"
+                         >Description</label>
+
+                         <textarea
+                         className="form-control"
+                         id="description"
+                         name="description"
+                         onChange={handleInputChange}
+                         value={values.description}
+                         ></textarea>
+
+                         
+                         <label
+                         className="form-label"
+                         htmlFor="location"
+                         >location</label>
+
+                         <input
+                         className="form-control"
+                         id="location"
+                         name="location"
+                         type="text"
+                         
+                         />
+
+                         <label
+                         className="form-label"
+                         htmlFor="limit"
+                         >Limit</label>
+
+                         <input
+                         className="form-control"
+                         id="limit"
+                         name="limit"
+                         type="time"
+                         onChange={handleInputChange}
+                         value={values.description}
+                         />
+                        
+                        </div>
                     </div>
                 </div>
                 <div className="modal-footer">
-                    <button className="btn btn-sm btn-outline-primary">
+                    <button className="btn btn-sm btn-outline-primary"
+                    onClick={() => console.log(values)}
+                    >
                     <i className="bi bi-pencil-square"></i> 
                     Save
                     </button>
