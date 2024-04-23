@@ -30,7 +30,18 @@ const ShowItemModal = ({task}) => {
                     </div>
                       Show selected item information
                   </div>
+
                   <div className="modal-footer">
+                  <button className="btn btn-sm btn-outline-primary">
+                    <i className="bi bi-trash"></i>
+                    Delete
+                  </button>
+
+                  <button className="btn btn-sm btn-outline-primary">
+                    <i className="bi bi-pencil-square"></i>
+                    Edit
+                  </button>
+                  
                   <button
                   type="button"
                   className="btn btn-secondary"
@@ -39,14 +50,8 @@ const ShowItemModal = ({task}) => {
                     <i className="bi bi-x-lg"></i>
                       Close
                   </button>
-                  <button className="btn btn-sm btn-outline-primary">
-                    <i className="bi bi-pencil-square"></i>
-                    Edit
-                  </button>
-                  <button className="btn btn-sm btn-outline-primary">
-                    <i className="bi bi-trash"></i>
-                    Delete
-                  </button>
+                  
+                  
                   </div>
               </div>
           </div>
