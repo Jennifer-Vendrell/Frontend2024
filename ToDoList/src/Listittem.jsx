@@ -1,11 +1,18 @@
-import ShowItemModal from "./ShowltemModal"
+import PropTypes  from "prop-types"
+import ShowItemModal from "./ShowItemModal"
+import TaskModal from "./TaskModal"
 
-const Listittem=({task}) => {
+const Listittem = ({task}) => {
   return (
     <>
     <div className="row">
         <div className="col-6">
-          <ShowItemModal task={task} />
+          <ShowItemModal task={task}/>
+         <TaskModal
+           task={task}
+           taskList={taskList}
+           setTaskList={setTaskList}
+           /> 
           <input type="checkbox"/>
           <button 
           className="btn btn-link"
@@ -21,12 +28,14 @@ const Listittem=({task}) => {
         <div className="col-3">
           {task.location}
         </div>
-        <div className="col">
-         
-        </div>
+
       </div>
     </>
   )
+}
+
+Listittem.PropTypes ={
+  task: PropTypes.object.isRequired,
 }
 
 export default Listittem
