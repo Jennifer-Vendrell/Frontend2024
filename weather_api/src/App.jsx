@@ -1,4 +1,5 @@
 import WeatherCard from "./components/WeatherCard"
+import './assets/css/index.css'
 
 const App = ()=>{
 
