@@ -14,9 +14,12 @@ const WeatherCard = ({city}) => {
     getWeather()
 }, [city])
 
+const dayStile = {backgroundColor: '#666', color: 'white'}
+  const style = !weather?.current.is_day ? dayStile: {}
+
     return (
 
-        <div className="card" style={{width: "18rem"}}>
+        <div className="card col-3 m-2"  style={{width:"18rem", ...style}}>
             <img 
                 src={`http:${weather?.current.condition.icon}`} 
                 className="card-img-top"
