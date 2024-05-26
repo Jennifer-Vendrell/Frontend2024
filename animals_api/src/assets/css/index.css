@@ -1,0 +1,22 @@
+.container {
+    width: 80;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.card {
+    border: 1px solid #00b3d2;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+body {
+   
+    background-image: linear-gradient(to right top, #37052c, #3e3c75, #0077b4, #00b3d2, #12ebce);
+}
