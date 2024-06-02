@@ -3,21 +3,34 @@ import { getArtworks } from "../api/articApi";
 
 const ArtworksCard = ({artworksId}) => {
     const [artworks, setArtworks] = useState(null);
+    const[error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchArtwork = async () => {
+        const storedArtworkId = localStorage.getItem('artworksId');
+        const fetchArtwork = async (id) => {
             try{
-            const data = await getArtworks(artworksId);
+                setError(null);
+            const data = await getArtworks(id);
+            if (!data || Object.keys(data).length === 0){
+                throw new Error("Artwork not found")
+            }
             setArtworks(data);
         } catch (error){
-            console.error("Error fetching artwork data:", error);
+           setError("Error fetching artwork data:" + error.message);
+           setArtworks(null);
         }
     };
     //detalles de obra de arte//
-        if (artworksId) {
-            fetchArtwork();   
+    const idToFetch = artworksId || storedArtworkId;
+        if (idToFetch) {
+            fetchArtwork(idToFetch);  
+            localStorage.setItem('artworksId', idToFetch); 
         }    
     }, [artworksId]);
+
+    if(error){
+        return <p>{error}</p>
+    }
 
     if (!artworks){
         return <p>Loading artwork...</p>

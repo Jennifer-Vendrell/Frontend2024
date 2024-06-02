@@ -1,15 +1,16 @@
 import React, {useState} from "react";
 
 const SearchArtworks = ({onSearch}) => {
-  const [artworkId, setArtworkId] = useState("");
+  const [artworksId, setArtworkId] = useState("");
 
   const handleInputChange = (event) => {
     setArtworkId(event.target.value);
   };
 
   const handleSearch = () => {
-    onSearch(artworkId);
-    setArtworkId(""); // Limpiar el campo después de la búsqueda
+    onSearch(artworksId);
+    localStorage.setItem('artworksId', artworksId);
+    setArtworks(""); // Limpiar el campo después de la búsqueda
   };
 
   return (
@@ -18,7 +19,7 @@ const SearchArtworks = ({onSearch}) => {
         type="text"
         className="form-control"
         placeholder="Enter Artwork ID"
-        value={artworkId}
+        value={artworksId}
         onChange={handleInputChange}
       />
       <button className="btn btn-primary" type="button" onClick={handleSearch}>
