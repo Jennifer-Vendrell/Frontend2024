@@ -1,0 +1,25 @@
+body {
+    background-image: linear-gradient(to left, #370533, #323f7d, #007ab7, #00b4cf, #12ebc5);
+}
+
+.container {
+    padding: 20px;
+}
+
+.card {
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-group-text {
+    margin-right: 10px;
+}
