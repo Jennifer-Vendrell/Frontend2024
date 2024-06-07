@@ -10,7 +10,7 @@ const SearchArtworks = ({onSearch}) => {
   const handleSearch = () => {
     onSearch(artworksId);
     localStorage.setItem('artworksId', artworksId);
-    setArtworks(""); // Limpiar el campo después de la búsqueda
+    setArtworks(""); //  búsqueda
   };
 
   return (
