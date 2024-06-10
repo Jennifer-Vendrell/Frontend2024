@@ -19,3 +19,6 @@ const App =() => {
 }
 
 export default App;
+
+//proyecto terminado//
+//obras de arte//

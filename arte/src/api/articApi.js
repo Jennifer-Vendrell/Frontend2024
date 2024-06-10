@@ -10,3 +10,6 @@ export const getArtworks = async (artworksId) => {
     const data = await response.json();
     return data.data;
   };
+
+  //proyecto terminado//
+//obras de arte//

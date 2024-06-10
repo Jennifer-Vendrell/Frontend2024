@@ -58,3 +58,5 @@ const ArtworksCard = ({artworksId}) => {
 };
 
 export default ArtworksCard;
+//proyecto terminado//
+//obras de arte//

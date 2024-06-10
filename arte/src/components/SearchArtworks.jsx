@@ -30,3 +30,5 @@ const SearchArtworks = ({onSearch}) => {
 };
 
 export default SearchArtworks;
+//proyecto terminado//
+//obras de arte//
